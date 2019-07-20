@@ -1,0 +1,10 @@
+
+/* + ~ 练习 */
+
+.main p + ul{
+    border:1px solid red;
+}
+.main p ~ ul{
+    background: #000;
+    color:#fff;
+}
