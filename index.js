@@ -51,6 +51,17 @@ function test () {
 }
 
 test()
+
+
+{
+  let a ='123'
+  let b = '456'
+  console.info('dadf',a)
+  
+}
+
+
+console.info('dadf',a)
 console.info('--------')
 // 变量提升和函数提升优先级的问题
 
@@ -61,3 +72,4 @@ function b () {
 }
 console.info(b)
 // alert(b)
+

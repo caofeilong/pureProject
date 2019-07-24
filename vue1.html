@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue study</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+     Vue.component('my-test',{
+         data:function(){
+             return {
+                 name:'my-test'
+            }
+         },
+         template:`<span>{{name}}</span>`
+     })
+     var componentA = {
+         data:function(){
+             return {
+                 msg:'我是一个局部组件A'
+             }
+         },
+         template:`<span>{{msg}}</span>`
+     }
+     var componentB = {
+         data:function(){
+             return {
+                 msg:'我是一个局部组件B'
+             }
+         },
+         template:`<span>{{msg}}</span>`
+     }
+    </script>
+</head>
+<body>
+    <div id='app'>
+    {{message}}
+    <div v-if="show">
+      显示元素
+    </div>
+    <input type="text" v-model='message'>
+    <button v-on:click='clickBtn'>click btn</button>
+    <ul>
+        <li v-for='item in todos'>
+            {{item}}
+        </li>
+    </ul>
+    <div v-html='html'></div>
+    <div>{{evennum}}</div>
+    <ul>
+        <li v-for='num in evennum'>
+            {{num}}
+        </li>
+    </ul>
+    <div>
+        uname:<input type="text" v-model='form.uname'> <br>
+        pwd: <input type="text" v-model='form.pwd'> <br>
+        age: <input type="text" v-model='form.age'> <br>
+    </div>
+    <my-test></my-test>
+    <component-a></component-a>
+    <br>
+    <br>
+    <component v-bind:is='selectComp'></component>
+    </div>
+    <script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message:'hello world',
+            show:true,
+            html:'<a href=\'#\'>a标签</a>',
+            todos:[
+                1,2,3,4
+            ],
+            nums:[
+                1,2,3,4,5,6,7,8,9
+            ],
+            form:{
+            },
+            selectComp:'component-a'
+        },
+        components:{'component-a':componentA,'component-b':componentB},
+        computed:{
+            evennum:function(){
+                return this.nums.filter((item)=>{
+                    return item % 2 === 0
+                })
+            }
+        },
+        methods:{
+            clickBtn:function(){
+                console.info('click btn')
+            }
+        }
+    })
+    </script>
+</body>
+</html>
