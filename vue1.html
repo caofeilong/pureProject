@@ -26,13 +26,17 @@
      var componentB = {
          data:function(){
              return {
-                 msg:'我是一个局部组件BA'
+                 msg:'我是一个局部组件B'
              }
          },
-         template:`<span>{{msg}}</span>`
+         template:`<span>{{msg}}
+            <slot v-bind:msg='msg'></slot>
+            <hr/>
+            <slot name='footer'></slot>
+         </span>`
      }
     </script>
-</head>
+</head> 
 <body>
     <div id='app'>
     {{message}}
@@ -60,6 +64,20 @@
     </div>
     <my-test></my-test>
     <component-a></component-a>
+    <br>
+    <component-b>
+        <template v-slot:default='cfl'>
+                <div style="color:red;"  >
+                        {{cfl.msg}}
+                        我是slot 的内容 <br>
+                        {{message}}
+                </div>
+        </template>
+       
+        <template v-slot:footer >
+             footer
+        </template>
+    </component-b>
     <br>
     <br>
     <component v-bind:is='selectComp'></component>
