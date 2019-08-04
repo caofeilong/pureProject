@@ -8,9 +8,13 @@ export default {
       format: 'cjs'
     },
     plugins: [
+<<<<<<< HEAD
       commonjs({
         extensions: [ '.js', '.vue' ],  
       }),
+=======
+      commonjs(),
+>>>>>>> cb68ba897ec262857657c1dc0a47393a08a28eb0
       VuePlugin(/* VuePluginOptions */)
     ]
   };
