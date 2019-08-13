@@ -1,0 +1,59 @@
+
+
+//定义变量
+
+$text-color:red;
+
+//定义默认变量，默认变量被覆盖的方法是在默认变量之前重新定义一下变量
+$--color-black: #000000 !default;
+
+//将变量的作用域设为全局
+$E: 'el' !global;
+
+
+//定义mixin
+
+@mixin btn{
+  &:active{
+    background-color: mix(#fff,red,10%);
+  }
+}
+
+//mix($color-1,$color-2,$weight)
+//$color-1 和 $color-2 指的是你需要合并的颜色，颜色可以是任何表达式，也可以是颜色变量
+//$weight 为 合并的比例（选择权重），默认值为 50%，其取值范围是 0~1 之间。它是每个 RGB 的百分比来衡量，当然透明度也会有一定的权重。默认的比例是 50%，这意味着两个颜色各占一半，如果指定的比例是 25%，这意味着第一个颜色所占比例为 25%，第二个颜色所占比例为75%。
+
+
+//@at-root  提到外层
+
+.btn{
+  color:$text-color;
+  @include btn;
+  &.btn--primary{
+    background: aqua;
+  }
+
+  @at-root {
+    .btn--success{
+      background: bisque;
+    }
+  }
+}
+
+// clas样式包含wd-col 的元素
+[class*='wd-col']{
+  box-sizing: border-box;
+}
+
+//循环方法
+//这两个的区别是关键字 through 表示包括 end 这个数，而 to 则不包括 end 这个数。
+@for $i from 0 through 2 {
+  .wd-el-#{$i}{
+    width:$i*10+'px';
+  }
+}
+@for $i from 0 to 2 {
+  .wd-el-#{$i}{
+    width:$i*10+'px';
+  }
+}

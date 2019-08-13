@@ -1,0 +1,28 @@
+.btn {
+  color: red; }
+  .btn:active {
+    background-color: #ff1a1a; }
+  .btn.btn--primary {
+    background: aqua; }
+  .btn--success {
+    background: bisque; }
+
+[class*='wd-col'] {
+  box-sizing: border-box; }
+
+.wd-el-0 {
+  width: "0px"; }
+
+.wd-el-1 {
+  width: "10px"; }
+
+.wd-el-2 {
+  width: "20px"; }
+
+.wd-el-0 {
+  width: "0px"; }
+
+.wd-el-1 {
+  width: "10px"; }
+
+/*# sourceMappingURL=index.css.map */
